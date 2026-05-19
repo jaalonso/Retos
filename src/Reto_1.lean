@@ -1,5 +1,6 @@
 -- Reto_1.lean
--- Soluciones del 10-May-26: La sucesión 1/n converge a 0.
+-- Soluciones del 1º reto (10 de mayo de 2026)
+-- La sucesión 1/n converge a 0.
 -- ---------------------------------------------------------------------
 
 -- ---------------------------------------------------------------------

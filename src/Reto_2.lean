@@ -1,6 +1,6 @@
 -- Reto_2.lean
--- Soluciones del 17-May-26: La sucesión 1, -1, 1, -1,... no es
--- convergente.
+-- Soluciones de 2º reto (17 de mayo de 2026).
+-- La sucesión 1, -1, 1, -1,... no esconvergente.
 -- ---------------------------------------------------------------------
 
 -- ---------------------------------------------------------------------
