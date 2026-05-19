@@ -3,5 +3,5 @@
 Repositorio de ejercicios semanales de demostración en Lean 4 del grupo
 [[https://t.me/Retos_Matematicos][Retos matemáticos]].
 
-1. 10-May-26: [[./Reto_1.lean][La sucesión 1/n converge a 0]].
-2. 17-May-26: [[./Reto_2.lean][La sucesión 1, -1, 1, -1,... no es convergente]].
+1. 10-May-26: [[./src/Reto_1.lean][La sucesión 1/n converge a 0]].
+2. 17-May-26: [[./src/Reto_2.lean][La sucesión 1, -1, 1, -1,... no es convergente]].
