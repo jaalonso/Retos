@@ -260,3 +260,67 @@ by
   norm_num at h13
 
 end Solucion3
+
+-- 4ª solución (de Esteban Martínez Vañó)
+-- ======================================
+
+namespace Solucion4
+
+example
+  (ha : ∀ n, a n = (-1) ^ n)
+  : ¬ SucConv a :=
+by
+  intro a_conv
+  -- a_conv : SucConv a
+  -- ⊢ False
+  rcases a_conv with ⟨L, a_lim⟩
+  -- L : ℝ
+  -- a_lim : LimSuc a L
+  have eps_one := a_lim 1 (by norm_num)
+  -- eps_one : ∃ N, ∀ n ≥ N, |a n - L| < 1
+  rcases eps_one with ⟨N, hN⟩
+  -- N : ℕ
+  -- hN : ∀ n ≥ N, |a n - L| < 1
+  by_cases hL: (L ≤ 0)
+  · -- hL : L ≤ 0
+    have h := hN (2*N) (by linarith)
+    -- h : |a (2 * N) - L| < 1
+    rw [ha, neg_one_pow_eq_pow_mod_two, Nat.mul_mod_right, pow_zero, abs_lt] at h
+    -- h : -1 < 1 - L ∧ 1 - L < 1
+    linarith
+  · -- hL : ¬L ≤ 0
+    rw [not_le] at hL
+    -- hL : 0 < L
+    have h := hN (2*N + 1) (by linarith)
+    -- h : |a (2 * N + 1) - L| < 1
+    rw [ha, neg_one_pow_eq_pow_mod_two, Nat.mul_add_mod, Nat.mod_succ, pow_one, abs_lt] at h
+    -- h : -1 < -1 - L ∧ -1 - L < 1
+    linarith
+
+end Solucion4
+
+-- 5ª solución (refactorización de la 4ª)
+-- ======================================
+
+namespace Solucion5
+
+example
+  (ha : ∀ n, a n = (-1) ^ n)
+  : ¬ SucConv a := by
+  rintro ⟨L, hL⟩
+  -- L : ℝ
+  -- hL : LimSuc a L
+  -- ⊢ False
+  obtain ⟨N, hN⟩ := hL 1 one_pos
+  -- N : ℕ
+  -- hN : ∀ n ≥ N, |a n - L| < 1
+  have h1 := hN (2 * N) (by omega)
+  -- h1 : |a (2 * N) - L| < 1
+  have h2 := hN (2 * N + 1) (by omega)
+  -- h2 : |a (2 * N + 1) - L| < 1
+  simp [ha, neg_one_pow_eq_pow_mod_two, abs_lt] at h1 h2
+  -- h1 : L < 1 + 1 ∧ 0 < L
+  -- h2 : L < 0 ∧ -1 - L < 1
+  linarith
+
+end Solucion5
