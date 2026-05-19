@@ -202,3 +202,61 @@ by
   exact (lt_irrefl 1) h2
 
 end Solucion2
+
+-- 3ª demostración
+-- ===============
+
+namespace Solucion3
+
+example
+  (ha : ∀ n, a n = (-1) ^ n)
+  : ¬ SucConv a :=
+by
+  change SucConv a → False
+  -- ⊢ SucConv a → False
+  intro h
+  -- h : SucConv a
+  -- ⊢ False
+  change ∃ L, LimSuc a L at h
+  -- h : ∃ L, LimSuc a L
+  choose L hL using h
+  -- L : ℝ
+  -- hL : LimSuc a L
+  change ∀ ε > 0, ∃ N, ∀ n ≥ N, |a n - L| < ε at hL
+  -- hL : ∀ ε > 0, ∃ N, ∀ n ≥ N, |a n - L| < ε
+  specialize hL (1/2)
+  -- hL : 1 / 2 > 0 → ∃ N, ∀ n ≥ N, |a n - L| < 1 / 2
+  have h0 : (0 : ℝ) < 1/2 := by norm_num
+  specialize hL h0
+  -- hL : ∃ N, ∀ n ≥ N, |a n - L| < 1 / 2
+  choose N hN using hL
+  -- N : ℕ
+  -- hN : ∀ n ≥ N, |a n - L| < 1 / 2
+  have h2N : N ≤ 2 * N := by bound
+  have h2Np1 : N ≤ 2 * N + 1 := by bound
+  have h1 : |a (2 * N) - L| < 1 / 2 := by apply hN (2 * N) h2N
+  have h2 : |a (2 * N + 1) - L| < 1 / 2 := by apply hN (2 * N + 1) h2Np1
+  have h3 : a (2 * N) = (-1) ^ (2 * N) := by apply ha (2 * N)
+  have h4 : a (2 * N + 1) = (-1) ^ (2 * N + 1) := by apply ha (2 * N + 1)
+  rewrite [h3] at h1
+  -- h1 : |(-1) ^ (2 * N) - L| < 1 / 2
+  rewrite [h4] at h2
+  -- h2 : |(-1) ^ (2 * N + 1) - L| < 1 / 2
+  have h5 : (-1 : ℝ) ^ (2 * N) = 1 := by bound
+  rewrite [h5] at h1
+  -- h1 : |1 - L| < 1 / 2
+  have h6 : (-1 : ℝ) ^ (2 * N + 1) = -1 := by grind
+  rewrite [h6] at h2
+  -- h2 : |-1 - L| < 1 / 2
+  have h7 : (2 : ℝ) = |2| := by norm_num
+  have h8 : |(2 : ℝ)| = |1 - (-1)| := by ring_nf
+  have h9 : |1 - (-1)| = |(1 - L) + (L - (-1))| := by noncomm_ring
+  have h10 : |(1 - L) + (L - (-1))| ≤ |(1 - L)| + |(L - (-1))| :=
+    abs_add_le (1 - L) (L - -1)
+  have h11 : |(L - (-1))| = |-((-1) - L)| := by ring_nf
+  have h12 : |-((-1) - L)| = |((-1) - L)| := by apply abs_neg
+  have h13 : (2 : ℝ) < 1/2 + 1/2 := by
+    linarith [h8, h9, h10, h11, h12, h7, h1, h2]
+  norm_num at h13
+
+end Solucion3
