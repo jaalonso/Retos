@@ -324,3 +324,36 @@ example
   linarith
 
 end Solucion5
+
+-- 6ª solución
+-- ===========
+
+namespace Solucion6
+
+example
+  (ha : ∀ n, a n = (-1) ^ n)
+  : ¬SucConv a :=
+by
+  rintro ⟨L, hL⟩
+  -- L : ℝ
+  -- hL : LimSuc a L
+  -- ⊢ False
+  obtain ⟨N, hN⟩ := hL (1 / 2) (by positivity)
+  -- N : ℕ
+  -- hN : ∀ n ≥ N, |a n - L| < 1 / 2
+  have h1 := hN (2 * N) (by omega)
+  -- h1 : |a (2 * N) - L| < 1 / 2
+  have h2 := hN (2 * N + 1) (by omega)
+  -- h2 : |a (2 * N + 1) - L| < 1 / 2
+  simp only [ha, pow_succ] at h1 h2
+  -- h1 : |(-1) ^ (2 * N) - L| < 1 / 2
+  -- h2 : |(-1) ^ (2 * N) * -1 - L| < 1 / 2
+  norm_num at h1 h2
+  -- h1 : |1 - L| < 1 / 2
+  -- h2 : |-1 - L| < 1 / 2
+  rw [abs_lt] at h1 h2
+  -- h1 : -(1 / 2) < 1 - L ∧ 1 - L < 1 / 2
+  -- h2 : -(1 / 2) < -1 - L ∧ -1 - L < 1 / 2
+  linarith
+
+end Solucion6
