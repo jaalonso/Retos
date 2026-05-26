@@ -432,13 +432,13 @@ example
   (hb : ∀ n, b n = 2 * a n)
   : LimSuc b (2 * L) :=
 by
-  intro eps epos
-  -- eps : ℝ
-  -- epos : eps > 0
-  -- ⊢ ∃ N, ∀ n ≥ N, |b n - 2 * L| < eps
-  obtain ⟨N, hN⟩ := ha (eps/2) (by grind)
+  intro ε _
+  -- ε : ℝ
+  -- a : ε > 0
+  -- ⊢ ∃ N, ∀ n ≥ N, |b n - 2 * L| < ε
+  obtain ⟨N, hN⟩ := ha (ε/2) (by grind)
   -- N : ℕ
-  -- hN : ∀ n ≥ N, |a n - L| < eps / 2
-  refine ⟨N, fun n ngeqN => by grind⟩
+  -- hN : ∀ n ≥ N, |a n - L| < ε / 2
+  refine ⟨N, fun _ _ => by grind⟩
 
 end Solucion10
