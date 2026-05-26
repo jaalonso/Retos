@@ -386,3 +386,38 @@ by
   linarith
 
 end Solucion8
+
+-- 9ª solución
+-- ===========
+
+namespace Solucion9
+
+example
+  (ha : LimSuc a L)
+  (hb : ∀ n, b n = 2 * a n)
+  : LimSuc b (2 * L) :=
+by
+  intro eps epos
+  -- eps : ℝ
+  -- epos : eps > 0
+  -- ⊢ ∃ N, ∀ n ≥ N, |b n - 2 * L| < eps
+  rcases ha (eps/2) (half_pos epos) with ⟨N, hN⟩
+  -- N : ℕ
+  -- hN : ∀ n ≥ N, |a n - L| < eps / 2
+  use N
+  -- ⊢ ∀ n ≥ N, |b n - 2 * L| < eps
+  intro n ngeqN
+  -- n : ℕ
+  -- ngeqN : n ≥ N
+  -- ⊢ |b n - 2 * L| < eps
+  rw [hb,
+      -- ⊢ |2 * a n - 2 * L| < eps
+      ← mul_sub,
+      -- ⊢ |2 * (a n - L)| < eps
+      abs_mul,
+      -- ⊢ |2| * |a n - L| < eps
+      Nat.abs_ofNat]
+  -- ⊢ 2 * |a n - L| < eps
+  linarith [hN n ngeqN]
+
+end Solucion9
