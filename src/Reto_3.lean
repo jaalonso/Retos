@@ -439,10 +439,6 @@ by
   obtain ⟨N, hN⟩ := ha (eps/2) (by grind)
   -- N : ℕ
   -- hN : ∀ n ≥ N, |a n - L| < eps / 2
-  refine ⟨N, fun n ngeqN => ?_⟩
-  -- n : ℕ
-  -- ngeqN : n ≥ N
-  -- ⊢ |b n - 2 * L| < eps
-  grind
+  refine ⟨N, fun n ngeqN => by grind⟩
 
 end Solucion10
