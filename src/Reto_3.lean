@@ -421,3 +421,28 @@ by
   linarith [hN n ngeqN]
 
 end Solucion9
+
+-- 10ª solución (refactorización de la 9ª)
+-- =======================================
+
+namespace Solucion10
+
+example
+  (ha : LimSuc a L)
+  (hb : ∀ n, b n = 2 * a n)
+  : LimSuc b (2 * L) :=
+by
+  intro eps epos
+  -- eps : ℝ
+  -- epos : eps > 0
+  -- ⊢ ∃ N, ∀ n ≥ N, |b n - 2 * L| < eps
+  obtain ⟨N, hN⟩ := ha (eps/2) (by grind)
+  -- N : ℕ
+  -- hN : ∀ n ≥ N, |a n - L| < eps / 2
+  refine ⟨N, fun n ngeqN => ?_⟩
+  -- n : ℕ
+  -- ngeqN : n ≥ N
+  -- ⊢ |b n - 2 * L| < eps
+  grind
+
+end Solucion10
