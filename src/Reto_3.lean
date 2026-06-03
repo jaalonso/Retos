@@ -1,5 +1,5 @@
 -- Reto_3.lean
--- Soluciones de 2º reto (24 de mayo de 2026).
+-- Soluciones de 3º reto (24 de mayo de 2026).
 -- Si aₙ converge a L, entonces 2aₙ converge a 2L.
 -- ---------------------------------------------------------------------
 
@@ -436,7 +436,7 @@ by
   -- ε : ℝ
   -- a : ε > 0
   -- ⊢ ∃ N, ∀ n ≥ N, |b n - 2 * L| < ε
-  obtain ⟨N, hN⟩ := ha (ε/2) (by grind)
+  obtain ⟨N, _⟩ := ha (ε/2) (by grind)
   -- N : ℕ
   -- hN : ∀ n ≥ N, |a n - L| < ε / 2
   refine ⟨N, fun _ _ => by grind⟩
