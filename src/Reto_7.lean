@@ -1,7 +1,11 @@
 -- Reto_7.lean
--- Soluciones de 7º reto (21 de junio de 2026).
+-- Soluciones d e 7º reto (21 de junio de 2026).
 -- La composición de funciones inyectivas es inyectiva.
 -- Sevilla, 28-junio-2026
+-- ---------------------------------------------------------------------
+
+-- ---------------------------------------------------------------------
+-- Demostrar que la composición de funciones inyectivas es inyectiva.
 -- ---------------------------------------------------------------------
 
 -- Demostraciones en lenguaje natural (LN)
