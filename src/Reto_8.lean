@@ -19,20 +19,24 @@
 -- Demostración en lenguaje natural
 -- ================================
 
--- Para demostrarlo por reducción al absurdo, supongamos que
--- existe un L ∈ ℝ tal que aₙ converge a L y
---    ∣L∣ < 5.                                             (1)
+-- Para demostrar la negación, se supone que existe un L ∈ ℝ
+-- tal que aₙ converge a L y
+--    ∣L∣ < 5,                                             (1)
+-- y se llega a una contradicción.
+--
 -- Por la definición de límite, usando ε = 5 > 0, existe
 -- k ∈ ℕ tal que
 --    ∀ n ≥ k, ∣aₙ − L∣ < 5                                (2)
--- Por hipótesis sobre la sucesión, para ese mismo k existe n
--- tal que se cumplen las siguientes dos relaciones:
+--
+-- Por hipótesis sobre la sucesión, para ese mismo k existe un
+-- n ∈ ℕ tal que se cumplen las siguientes dos relaciones:
 --    n ≥ k                                                (3)
 --    ∣aₙ∣ > 10                                            (4)
 -- De (2) y (3) se tiene que
 --    ∣aₙ − L∣ < 5                                         (5)
+--
 -- Para obtener una contradicción basta probar que 10 < 10,
--- como se muestra a continuación:
+-- que se demuestra a continuación:
 --    10 < ∣aₙ∣              [por (4)]
 --       = ∣(aₙ − L) + L∣
 --       ≤ ∣aₙ − L∣ + ∣L∣    [por desigualdad triangular]
