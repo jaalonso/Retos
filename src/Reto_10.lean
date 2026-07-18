@@ -1,5 +1,5 @@
 -- Reto_10.lean
--- Soluciones del 9º reto (13 de julio de 2026).
+-- Soluciones del 10º reto (13 de julio de 2026).
 -- Si una sucesión converge a un límite no nulo, entonces sus
 --   términos están eventualmente acotados inferiormente por
 --   la mitad del valor absoluto del límite.
