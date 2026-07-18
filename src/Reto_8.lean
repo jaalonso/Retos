@@ -125,11 +125,11 @@ by
   apply lt_irrefl (10 : ℝ)
   -- ⊢ 10 < 10
   have h5 : |a n - L| < 5 := hk n hn1
-  calc 10 < |a n|        := hn2
-     _ = |(a n - L) + L| := congrArg abs (sub_add_cancel (a n) L).symm
-     _ ≤ |a n - L| + |L| := abs_add_le (a n - L) L
-     _ < 5 + 5           := add_lt_add h5 hL2
-     _ = 10              := by norm_num
+  calc 10 < |a n|         := hn2
+     _ = |(a n - L) + L|  := congrArg abs (sub_add_cancel (a n) L).symm
+     _ ≤ |a n - L| + |L|  := abs_add_le (a n - L) L
+     _ < 5 + 5            := add_lt_add h5 hL2
+     _ = 10               := by norm_num
 
 -- Lemas usados
 -- ============

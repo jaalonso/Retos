@@ -1,0 +1,31 @@
+-- Tenemos que demostrar que si aₙ es una sucesión y L y M son
+-- límites de aₙ, entonces L = M. Lo haremos por
+-- contradicción. Para ello, supongamos que
+--    L ≠ M
+-- Sea
+--    ε = |L - M|                                          (1)
+-- Entonces,
+--    ε/2 > 0                                              (2)
+-- y, teniendo en cuenta que aₙ converge a L y a M, existen
+-- k₁ y k₂ tales que
+--    ∀ n ≥ k₁, |aₙ - L| < ε/2                             (3)
+--    ∀ n ≥ k₂, |aₙ - M| < ε/2                             (4)
+-- Sea,
+--    k = máx(k₁, k₂)                                      (5)
+-- Entonces,
+--    k ≥ k₁                                               (6)
+--    k ≥ k₂                                               (7)
+-- De (3) y (6), se tiene
+--    |aₖ - L| < ε/2                                       (8)
+-- De (4) y (7), se tiene
+--    |aₖ - M| < ε/2                                       (9)
+--
+-- Tenemos que demostrar una contradicción, para lo que basta
+-- probar que ε < ε. Se prueba mediante la siguiente cadena
+--    ε = |L - M|                 [por (1)]
+--      = |(L - M) + (aₖ - aₖ)|
+--      = |(L - aₖ) + (aₖ - M)|
+--      ≤ |L - aₖ| + |aₖ - M|
+--      = |aₖ - L| + |aₖ - M|
+--      < ε/2 + ε/2               [por (8) y (9)]
+--      = ε
