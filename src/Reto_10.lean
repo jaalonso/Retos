@@ -55,7 +55,7 @@ variable {L : ℝ}
 example
   (ha : LimSuc a L)
   (hL : L ≠ 0)
-  : ∃ k, ∀ n ≥ k, |L| / 2 ≤ |a n| :=
+  : ∃ k, ∀ n ≥ k, |a n| ≥ |L| / 2 :=
 by
   obtain ⟨k, hk⟩ := ha (|L| / 2) (by grind)
   -- k : ℕ
@@ -74,7 +74,7 @@ by
 example
   (ha : LimSuc a L)
   (hL : L ≠ 0)
-  : ∃ k, ∀ n ≥ k, |L| / 2 ≤ |a n| :=
+  : ∃ k, ∀ n ≥ k,  |a n| ≥ |L| / 2 :=
 by
   obtain ⟨k, hk⟩ := ha (|L| / 2) (by grind)
   -- k : ℕ
@@ -101,7 +101,7 @@ by
 example
   (ha : LimSuc a L)
   (hL : L ≠ 0)
-  : ∃ k, ∀ n ≥ k, |L| / 2 ≤ |a n| :=
+  : ∃ k, ∀ n ≥ k, |a n| ≥ |L| / 2 :=
 by
   obtain ⟨k, hk⟩ := ha (|L| / 2) (by positivity)
   -- k : ℕ
@@ -128,7 +128,7 @@ by
 example
   (ha : LimSuc a L)
   (hL : L ≠ 0)
-  : ∃ k, ∀ n ≥ k, |L| / 2 ≤ |a n| :=
+  : ∃ k, ∀ n ≥ k, |a n| ≥ |L| / 2 :=
 by
   have h1 : 0 < |L| := abs_pos.mpr hL
   have h2 : 0 < |L| / 2 := half_pos h1
@@ -158,7 +158,7 @@ by
 example
   (ha : LimSuc a L)
   (hL : L ≠ 0)
-  : ∃ k, ∀ n ≥ k, |L| / 2 ≤ |a n| :=
+  : ∃ k, ∀ n ≥ k, |a n| ≥ |L| / 2 :=
 by
   obtain ⟨k, hk⟩ := ha (|L| / 2) (by grind)
   -- k : ℕ
