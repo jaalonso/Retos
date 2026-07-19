@@ -3,5 +3,13 @@
 Repositorio de ejercicios semanales de demostración en Lean 4 del grupo
 [[https://t.me/Retos_Matematicos][Retos matemáticos]].
 
-1. 10-May-26: [[./src/Reto_1.lean][La sucesión 1/n converge a 0]].
-2. 17-May-26: [[./src/Reto_2.lean][La sucesión 1, -1, 1, -1,... no es convergente]].
+1. [[./src/Reto_1.lean][La sucesión 1/n converge a 0]].
+2. [[./src/Reto_2.lean][La sucesión 1, -1, 1, -1,... no es convergente]].
+3. [[./src/Reto_3.lean][Si aₙ converge a L, entonces 2aₙ converge a 2L]].
+4. [[./src/Reto_4.lean][Existen infinitos números primos]].
+5. [[./src/Reto_5.lean][5²ⁿ - 2³ⁿ es divisible por 17]].
+6. [[./src/Reto_6.lean][Teorema del emparedado]].
+7. [[./src/Reto_7.lean][La composición de funciones inyectivas es inyectiva]].
+8. [[./src/Reto_8.lean][Una sucesión que posee infinitos términos con valor absoluto superior a 10 no puede converger a un límite cuyo valor absoluto sea menor que 5]].
+9. [[./src/Reto_9.lean][Unicidad del límite]].
+10. [[./src/Reto_10.lean][Si aₙ → L con L ≠ 0, entonces |aₙ| ≥ |L|/2 eventualmente]].

@@ -1,8 +1,6 @@
 -- Reto_10.lean
 -- Soluciones del 10º reto (13 de julio de 2026).
--- Si una sucesión converge a un límite no nulo, entonces sus
---   términos están eventualmente acotados inferiormente por
---   la mitad del valor absoluto del límite.
+-- Si aₙ → L con L ≠ 0, entonces |aₙ| ≥ |L|/2 eventualmente.
 -- Sevilla, 18-julio-2026
 -- -----------------------------------------------------------
 
