@@ -1,7 +1,6 @@
 #+TITLE: Retos matemáticos con Lean 4
 
-Repositorio de ejercicios semanales de demostración en Lean 4 del grupo
-[[https://t.me/Retos_Matematicos][Retos matemáticos]].
+Repositorio de ejercicios semanales de demostración en Lean 4 del grupo [[https://t.me/Retos_Matematicos][Retos matemáticos]].
 
 1. [[./src/Reto_1.lean][La sucesión 1/n converge a 0]].
 2. [[./src/Reto_2.lean][La sucesión 1, -1, 1, -1,... no es convergente]].
