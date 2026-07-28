@@ -1,3 +1,7 @@
 # cache and other artifacts produced by Lean's Lake build tool
 .lake/
 /.lake
+/src/EuclidIA/
+/src/Demostracion_manual.lean
+/src/Reto.lean
+/txt/
