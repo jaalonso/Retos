@@ -5,3 +5,4 @@ src/EuclidIA/
 src/Demostracion_manual.lean
 src/Reto.lean
 txt/
+/.lake
