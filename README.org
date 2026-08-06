@@ -12,3 +12,5 @@ Repositorio de ejercicios semanales de demostración en Lean 4 del grupo [[https
 8. [[./src/Reto_8.lean][Una sucesión que posee infinitos términos con valor absoluto superior a 10 no puede converger a un límite cuyo valor absoluto sea menor que 5]].
 9. [[./src/Reto_9.lean][Unicidad del límite]].
 10. [[./src/Reto_10.lean][Si aₙ → L con L ≠ 0, entonces |aₙ| ≥ |L|/2 eventualmente]].
+11. [[./src/Reto_11.lean][Si aₙ converge a L, entonces |aₙ| converge a |L|]].
+12. [[./src/Reto_12.lean][Si aₙ → L, bₙ → M y L < M, entonces eventualmente aₙ < bₙ]].

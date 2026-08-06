@@ -153,7 +153,7 @@ by
 -- 5ª demostración
 -- ===============
 
-example
+lemma EventualmenteMayorIgMitadAbsLimitePos
   (ha : LimSuc a L)
   (hL : L ≠ 0)
   : ∃ k, ∀ n ≥ k, |a n| ≥ |L| / 2 :=
