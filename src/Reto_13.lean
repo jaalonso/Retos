@@ -1,7 +1,6 @@
--- Reto_12.lean
--- Soluciones del reto nº. 13 (1 de agosto de 2026).
+-- Reto_13.lean
 -- Desigualdad triangular inversa: ||x| - |y|| ≤ |x - y|.
--- Sevilla, 8-agosto-2026
+-- Sevilla, 9-agosto-2026
 -- -----------------------------------------------------------
 
 -- ---------------------------------------------------------------------
@@ -52,7 +51,8 @@ by
 example :
   |(|x| - |y|)| ≤ |x - y| :=
 by
-  apply abs_le'.mpr
+  rw [abs_le']
+  -- ⊢ |x| - |y| ≤ |x - y| ∧ -(|x| - |y|) ≤ |x - y|
   constructor
   · -- ⊢ |x| - |y| ≤ |x - y|
     grind
@@ -65,7 +65,8 @@ by
 example :
   |(|x| - |y|)| ≤ |x - y| :=
 by
-  apply abs_le'.mpr
+  rw [abs_le']
+  -- ⊢ |x| - |y| ≤ |x - y| ∧ -(|x| - |y|) ≤ |x - y|
   constructor
   · -- ⊢ |x| - |y| ≤ |x - y|
     calc |x| - |y|
@@ -85,7 +86,8 @@ by
 example :
   |(|x| - |y|)| ≤ |x - y| :=
 by
-  apply abs_le'.mpr
+  rw [abs_le']
+  -- ⊢ |x| - |y| ≤ |x - y| ∧ -(|x| - |y|) ≤ |x - y|
   constructor
   · -- ⊢ |x| - |y| ≤ |x - y|
     calc |x| - |y|
@@ -105,7 +107,8 @@ by
 example :
   |(|x| - |y|)| ≤ |x - y| :=
 by
-  apply abs_le'.mpr
+  rw [abs_le']
+  -- ⊢ |x| - |y| ≤ |x - y| ∧ -(|x| - |y|) ≤ |x - y|
   constructor
   · -- ⊢ |x| - |y| ≤ |x - y|
     calc |x| - |y|
