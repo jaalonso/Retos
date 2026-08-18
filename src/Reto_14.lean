@@ -14,12 +14,9 @@
 -- Por inducción en n.
 --
 -- Caso base: Para n = 0 se tiene:
---    2n + 9 = 2·0 + 9
---           = 9
---           < 16
---           = 2⁴
---           = 2⁰⁺⁴
---           = 2ⁿ⁺⁴
+--    2·0 + 9 = 9
+--            ≤ 16
+--            = 2⁰⁺⁴
 --
 -- Paso inductivo: Suponiendo la hipótesis de inducción
 --   2k + 9 ≤ 2ᵏ⁺⁴                                        (HI)
