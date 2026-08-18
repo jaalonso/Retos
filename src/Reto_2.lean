@@ -62,8 +62,6 @@ def SucConv (a : ℕ → ℝ) : Prop :=
 -- 1ª demostración
 -- ===============
 
-namespace Solucion1
-
 example
   (ha : ∀ n, a n = (-1) ^ n)
   : ¬ SucConv a :=
@@ -71,13 +69,16 @@ by
   intro h
   -- h : SucConv a
   -- ⊢ False
-  choose L hL using h
+  obtain ⟨L, hL⟩ := h
   -- L : ℝ
   -- hL : LimSuc a L
-  choose N hN using hL (1/2) (by grind)
+  obtain ⟨N, hN⟩ := hL (1/2) (by grind)
   -- N : ℕ
   -- hN : ∀ n ≥ N, |a n - L| < 1 / 2
-  have h1 : (2:ℝ) < 1 := calc
+  have h1 : ¬(2 : ℝ) < 1 := Nat.not_ofNat_lt_one
+  apply h1
+  -- ⊢ 2 < 1
+  calc
     2 = |2|                                        := by grind
     _ = |(1 - L) + (1 + L)|                        := by grind
     _ = |(1 - L) + (-1)*(-1 - L)|                  := by grind
@@ -90,14 +91,38 @@ by
     _ = |a (2*N) - L| + |a (2*N+1) - L|            := by simp [*]
     _ < 1/2 + 1/2                                  := by grind
     _ = 1                                          := by grind
+
+-- 2ª solución
+-- ===========
+
+example
+  (ha : ∀ n, a n = (-1) ^ n)
+  : ¬SucConv a :=
+by
+  rintro ⟨L, hL⟩
+  -- L : ℝ
+  -- hL : LimSuc a L
+  -- ⊢ False
+  obtain ⟨N, hN⟩ := hL (1 / 2) (by positivity)
+  -- N : ℕ
+  -- hN : ∀ n ≥ N, |a n - L| < 1 / 2
+  have h1 := hN (2 * N) (by omega)
+  -- h1 : |a (2 * N) - L| < 1 / 2
+  have h2 := hN (2 * N + 1) (by omega)
+  -- h2 : |a (2 * N + 1) - L| < 1 / 2
+  simp only [ha, pow_succ] at h1 h2
+  -- h1 : |(-1) ^ (2 * N) - L| < 1 / 2
+  -- h2 : |(-1) ^ (2 * N) * -1 - L| < 1 / 2
+  norm_num at h1 h2
+  -- h1 : |1 - L| < 1 / 2
+  -- h2 : |-1 - L| < 1 / 2
+  rw [abs_lt] at h1 h2
+  -- h1 : -(1 / 2) < 1 - L ∧ 1 - L < 1 / 2
+  -- h2 : -(1 / 2) < -1 - L ∧ -1 - L < 1 / 2
   linarith
 
-end Solucion1
-
--- 2ª demostración (refactorización de la 1ª)
--- ==========================================
-
-namespace Solucion2
+-- 3ª demostración
+-- ===============
 
 variable {x y z x' y' : ℝ}
 variable {m n k : ℕ}
@@ -172,13 +197,16 @@ by
   intro h
   -- h : SucConv a
   -- ⊢ False
-  choose L hL using h
+  obtain ⟨L, hL⟩ := h
   -- L : ℝ
   -- hL : LimSuc a L
-  choose N hN using hL (1/2) one_half_pos
+  obtain ⟨N, hN⟩ := hL (1/2) one_half_pos
   -- N : ℕ
   -- hN : ∀ n ≥ N, |a n - L| < 1 / 2
-  have h1 : (2:ℝ) < 1 := by calc
+  have h1 : ¬(2 : ℝ) < 1 := Nat.not_ofNat_lt_one
+  apply h1
+  -- ⊢ 2 < 1
+  calc
     2 = |2| :=
           abs_two.symm
     _ = |(1 - L) + (1 + L)| :=
@@ -198,162 +226,3 @@ by
     _ < 1 / 2 + 1 / 2 :=
           add_lt_add (L9 hN) (L11 hN)
     _ = 1 := add_halves 1
-  have h2 : (1:ℝ) < 1 := lt_trans one_lt_two h1
-  exact (lt_irrefl 1) h2
-
-end Solucion2
-
--- 3ª demostración
--- ===============
-
-namespace Solucion3
-
-example
-  (ha : ∀ n, a n = (-1) ^ n)
-  : ¬ SucConv a :=
-by
-  change SucConv a → False
-  -- ⊢ SucConv a → False
-  intro h
-  -- h : SucConv a
-  -- ⊢ False
-  change ∃ L, LimSuc a L at h
-  -- h : ∃ L, LimSuc a L
-  choose L hL using h
-  -- L : ℝ
-  -- hL : LimSuc a L
-  change ∀ ε > 0, ∃ N, ∀ n ≥ N, |a n - L| < ε at hL
-  -- hL : ∀ ε > 0, ∃ N, ∀ n ≥ N, |a n - L| < ε
-  specialize hL (1/2)
-  -- hL : 1 / 2 > 0 → ∃ N, ∀ n ≥ N, |a n - L| < 1 / 2
-  have h0 : (0 : ℝ) < 1/2 := by norm_num
-  specialize hL h0
-  -- hL : ∃ N, ∀ n ≥ N, |a n - L| < 1 / 2
-  choose N hN using hL
-  -- N : ℕ
-  -- hN : ∀ n ≥ N, |a n - L| < 1 / 2
-  have h2N : N ≤ 2 * N := by bound
-  have h2Np1 : N ≤ 2 * N + 1 := by bound
-  have h1 : |a (2 * N) - L| < 1 / 2 := by apply hN (2 * N) h2N
-  have h2 : |a (2 * N + 1) - L| < 1 / 2 := by apply hN (2 * N + 1) h2Np1
-  have h3 : a (2 * N) = (-1) ^ (2 * N) := by apply ha (2 * N)
-  have h4 : a (2 * N + 1) = (-1) ^ (2 * N + 1) := by apply ha (2 * N + 1)
-  rewrite [h3] at h1
-  -- h1 : |(-1) ^ (2 * N) - L| < 1 / 2
-  rewrite [h4] at h2
-  -- h2 : |(-1) ^ (2 * N + 1) - L| < 1 / 2
-  have h5 : (-1 : ℝ) ^ (2 * N) = 1 := by bound
-  rewrite [h5] at h1
-  -- h1 : |1 - L| < 1 / 2
-  have h6 : (-1 : ℝ) ^ (2 * N + 1) = -1 := by grind
-  rewrite [h6] at h2
-  -- h2 : |-1 - L| < 1 / 2
-  have h7 : (2 : ℝ) = |2| := by norm_num
-  have h8 : |(2 : ℝ)| = |1 - (-1)| := by ring_nf
-  have h9 : |1 - (-1)| = |(1 - L) + (L - (-1))| := by noncomm_ring
-  have h10 : |(1 - L) + (L - (-1))| ≤ |(1 - L)| + |(L - (-1))| :=
-    abs_add_le (1 - L) (L - -1)
-  have h11 : |(L - (-1))| = |-((-1) - L)| := by ring_nf
-  have h12 : |-((-1) - L)| = |((-1) - L)| := by apply abs_neg
-  have h13 : (2 : ℝ) < 1/2 + 1/2 := by
-    linarith [h8, h9, h10, h11, h12, h7, h1, h2]
-  norm_num at h13
-
-end Solucion3
-
--- 4ª solución (de Esteban Martínez Vañó)
--- ======================================
-
-namespace Solucion4
-
-example
-  (ha : ∀ n, a n = (-1) ^ n)
-  : ¬ SucConv a :=
-by
-  intro a_conv
-  -- a_conv : SucConv a
-  -- ⊢ False
-  rcases a_conv with ⟨L, a_lim⟩
-  -- L : ℝ
-  -- a_lim : LimSuc a L
-  have eps_one := a_lim 1 (by norm_num)
-  -- eps_one : ∃ N, ∀ n ≥ N, |a n - L| < 1
-  rcases eps_one with ⟨N, hN⟩
-  -- N : ℕ
-  -- hN : ∀ n ≥ N, |a n - L| < 1
-  by_cases hL: (L ≤ 0)
-  · -- hL : L ≤ 0
-    have h := hN (2*N) (by linarith)
-    -- h : |a (2 * N) - L| < 1
-    rw [ha, neg_one_pow_eq_pow_mod_two, Nat.mul_mod_right, pow_zero, abs_lt] at h
-    -- h : -1 < 1 - L ∧ 1 - L < 1
-    linarith
-  · -- hL : ¬L ≤ 0
-    rw [not_le] at hL
-    -- hL : 0 < L
-    have h := hN (2*N + 1) (by linarith)
-    -- h : |a (2 * N + 1) - L| < 1
-    rw [ha, neg_one_pow_eq_pow_mod_two, Nat.mul_add_mod, Nat.mod_succ, pow_one, abs_lt] at h
-    -- h : -1 < -1 - L ∧ -1 - L < 1
-    linarith
-
-end Solucion4
-
--- 5ª solución (refactorización de la 4ª)
--- ======================================
-
-namespace Solucion5
-
-example
-  (ha : ∀ n, a n = (-1) ^ n)
-  : ¬ SucConv a := by
-  rintro ⟨L, hL⟩
-  -- L : ℝ
-  -- hL : LimSuc a L
-  -- ⊢ False
-  obtain ⟨N, hN⟩ := hL 1 one_pos
-  -- N : ℕ
-  -- hN : ∀ n ≥ N, |a n - L| < 1
-  have h1 := hN (2 * N) (by omega)
-  -- h1 : |a (2 * N) - L| < 1
-  have h2 := hN (2 * N + 1) (by omega)
-  -- h2 : |a (2 * N + 1) - L| < 1
-  simp [ha, neg_one_pow_eq_pow_mod_two, abs_lt] at h1 h2
-  -- h1 : L < 1 + 1 ∧ 0 < L
-  -- h2 : L < 0 ∧ -1 - L < 1
-  linarith
-
-end Solucion5
-
--- 6ª solución
--- ===========
-
-namespace Solucion6
-
-example
-  (ha : ∀ n, a n = (-1) ^ n)
-  : ¬SucConv a :=
-by
-  rintro ⟨L, hL⟩
-  -- L : ℝ
-  -- hL : LimSuc a L
-  -- ⊢ False
-  obtain ⟨N, hN⟩ := hL (1 / 2) (by positivity)
-  -- N : ℕ
-  -- hN : ∀ n ≥ N, |a n - L| < 1 / 2
-  have h1 := hN (2 * N) (by omega)
-  -- h1 : |a (2 * N) - L| < 1 / 2
-  have h2 := hN (2 * N + 1) (by omega)
-  -- h2 : |a (2 * N + 1) - L| < 1 / 2
-  simp only [ha, pow_succ] at h1 h2
-  -- h1 : |(-1) ^ (2 * N) - L| < 1 / 2
-  -- h2 : |(-1) ^ (2 * N) * -1 - L| < 1 / 2
-  norm_num at h1 h2
-  -- h1 : |1 - L| < 1 / 2
-  -- h2 : |-1 - L| < 1 / 2
-  rw [abs_lt] at h1 h2
-  -- h1 : -(1 / 2) < 1 - L ∧ 1 - L < 1 / 2
-  -- h2 : -(1 / 2) < -1 - L ∧ -1 - L < 1 / 2
-  linarith
-
-end Solucion6

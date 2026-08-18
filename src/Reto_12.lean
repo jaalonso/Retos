@@ -116,11 +116,10 @@ by
 -- ===============
 
 example
-  (ha : LimSuc a L)
-  (hb : LimSuc b M)
-  (hLM : L < M)
-  : ∃ k, ∀ n ≥ k, a n < b n :=
-by
+    (ha : LimSuc a L)
+    (hb : LimSuc b M)
+    (hLM : L < M) :
+    ∃ k, ∀ n ≥ k, a n < b n := by
   set ε := (M - L) / 2 with ε_def
   -- ε_def : ε = (M - L) / 2
   obtain ⟨k1, hk1⟩ := ha ε (by positivity)
