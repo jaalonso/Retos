@@ -40,11 +40,8 @@ open Nat
 -- 1ª demostración
 -- ===============
 
-namespace Solucion1
-
-example (n : ℕ) : ∃ p, n ≤ p ∧ Nat.Prime p :=
-by
-  let p := minFac (n !  + 1)
+example (n : ℕ) : ∃ p, n ≤ p ∧ Nat.Prime p := by
+  set p := minFac (n !  + 1)
   have h1 : Nat.Prime p := by
     apply minFac_prime
     -- ⊢ n ! + 1 ≠ 1
@@ -66,12 +63,8 @@ by
   . -- ⊢ Nat.Prime p
     exact h1
 
-end Solucion1
-
 -- 2ª demostración
 -- ===============
-
-namespace Solucion2
 
 lemma L1 (n : ℕ) : n ! + 1 ≠ 1 :=
   Nat.ne_of_gt (succ_lt_succ (factorial_pos n))
@@ -94,117 +87,18 @@ example (n : ℕ) : ∃ p, n ≤ p ∧ Nat.Prime p :=
 by
   use minFac (n ! + 1)
   -- ⊢ n ≤ (n ! + 1).minFac ∧ Nat.Prime (n ! + 1).minFac
-  constructor
-  · -- ⊢ n ≤ (n ! + 1).minFac
-    exact L3 n
-  · -- ⊢ Nat.Prime (n ! + 1).minFac
-    exact L2 n
-
-end Solucion2
+  exact ⟨L3 n, L2 n⟩
 
 -- 3ª demostración
 -- ===============
 
-namespace Solucion3
-
-lemma L1 (n : ℕ) : n ! + 1 ≠ 1 :=
-  Nat.ne_of_gt (succ_lt_succ (factorial_pos n))
-
-lemma L2 (n : ℕ) : Nat.Prime (minFac (n ! + 1)) :=
-  minFac_prime (L1 n)
-
-lemma L3 (n : ℕ) : n ≤ minFac (n ! + 1) := by
-  by_contra h1
-  -- h1 : ¬n ≤ (n ! + 1).minFac
-  -- ⊢ False
-  exact absurd
-        ((Nat.dvd_add_iff_right (dvd_factorial (minFac_pos _) (le_of_not_ge h1))).mpr
-         (minFac_dvd _))
-        (Nat.Prime.not_dvd_one (L2 n))
-
-example (n : ℕ) : ∃ p, n ≤ p ∧ Nat.Prime p :=
-  ⟨minFac (n ! + 1), L3 n, L2 n⟩
-
-end Solucion3
-
--- 4ª demostración
--- ===============
-
-namespace Solucion4
-
-lemma L1 (n : ℕ) : n ! + 1 ≠ 1 :=
-  Nat.ne_of_gt (succ_lt_succ (factorial_pos n))
-
-lemma L2 (n : ℕ) : Nat.Prime (minFac (n ! + 1)) :=
-  minFac_prime (L1 n)
-
-lemma L3 (n : ℕ) : n ≤ minFac (n ! + 1) :=
-  Decidable.byContradiction (fun h1 => Nat.Prime.not_dvd_one (L2 n)
-    ((Nat.dvd_add_iff_right (dvd_factorial (minFac_pos _) (le_of_not_ge h1))).mpr
-     (minFac_dvd _)))
-
-example (n : ℕ) : ∃ p, n ≤ p ∧ Nat.Prime p :=
-  ⟨minFac (n ! + 1), L3 n, L2 n⟩
-
-end Solucion4
-
--- 5ª demostración
--- ===============
-
-namespace Solucion5
-
 example (n : ℕ) : ∃ p, n ≤ p ∧ Nat.Prime p :=
 exists_infinite_primes n
-
-end Solucion5
-
--- 6ª demostración
--- ===============
-
-namespace Solucion6
-
-example (n : ℕ) : ∃ p, n ≤ p ∧ Nat.Prime p := by
-  -- 1. Definimos m = n! + 1
-  let m := n.factorial + 1
-
-  -- 2. Demostramos que m > 1 para que tenga un factor primo
-  have m_gt_1 : 1 < m := Nat.succ_lt_succ (Nat.factorial_pos n)
-
-  -- 3. En lugar de obtain, usamos el factor primo mínimo de m
-  let p := m.minFac
-
-  -- 4. Demostramos que p cumple las condiciones
-  use p
-  constructor
-  · -- Probamos n ≤ p por contradicción
-    by_contra hlt
-    -- Si p < n (es decir, ¬ n ≤ p)
-    have p_le_n : p ≤ n := Nat.le_of_not_le hlt
-
-    -- Entonces p debe ser primo y dividir a m
-    have hp : p.Prime := Nat.minFac_prime (Nat.ne_of_gt m_gt_1)
-    have p_dvd_m : p ∣ m := Nat.minFac_dvd m
-
-    -- Como p ≤ n y p es primo (p > 0), p divide a n!
-    have p_dvd_fact : p ∣ n.factorial := Nat.dvd_factorial hp.pos p_le_n
-
-    -- Si p divide a n! y a n! + 1, divide a 1
-    have p_dvd_one : p ∣ 1 := (Nat.dvd_add_right p_dvd_fact).mp p_dvd_m
-
-    -- Contradicción: un primo no divide a 1
-    exact Nat.Prime.not_dvd_one hp p_dvd_one
-
-  · -- Demostramos que p es primo (usando la propiedad de minFac)
-    exact Nat.minFac_prime (Nat.ne_of_gt m_gt_1)
-
-end Solucion6
 
 -- Lemas usados
 -- ============
 
 variable (k m n : ℕ)
-variable (p : Prop) [Decidable p]
-#check (Decidable.byContradiction :  (¬p → False) → p)
 #check (Nat.Prime.not_dvd_one : Nat.Prime n → ¬n ∣ 1)
 #check (Nat.dvd_add_iff_right : k ∣ m → (k ∣ n ↔ k ∣ m + n))
 #check (Nat.lt_add_of_pos_left : 0 < k → n < k + n)
