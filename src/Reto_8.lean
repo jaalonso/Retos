@@ -1,8 +1,7 @@
 -- Reto_8.lean
 -- Soluciones del 8º reto (28 de junio de 2026).
--- Una sucesión que posee infinitos términos con valor
---  absoluto superior a 10 no puede converger a un límite
---  cuyo valor absoluto sea menor que 5.
+-- Sucesiones con infinitos términos grandes no convergen a
+--   límites pequeños
 -- Sevilla, 5-julio-2026
 -- ----------------------------------------------------------
 

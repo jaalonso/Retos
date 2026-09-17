@@ -12,8 +12,8 @@
 -- =======================================
 
 -- 1ª demostración en LN
--- =====================
-
+-- ---------------------
+--
 -- Tenemos que demostrar que
 --    (∀ x, y) [(g ∘ f)(x) = (g ∘ f)(y) → x = y]
 -- Sean x, y tales que
@@ -25,10 +25,10 @@
 -- que, usando que g es inyectiva, se reduce a
 --    g(f(x)) = g(f(y))
 -- que, por la definición de la composición, coincide con (1).
-
+--
 -- 2ª demostración en LN
--- =====================
-
+-- ---------------------
+--
 -- Tenemos que demostrar que
 --    (∀ x, y) [(g ∘ f)(x) = (g ∘ f)(y) → x = y]
 -- Sean x, y tales que
