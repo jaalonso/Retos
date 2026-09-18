@@ -14,3 +14,10 @@ Repositorio de ejercicios semanales de demostración en Lean 4 del grupo [[https
 10. [[./src/Reto_10.lean][Si aₙ → L con L ≠ 0, entonces |aₙ| ≥ |L|/2 eventualmente]].
 11. [[./src/Reto_11.lean][Si aₙ converge a L, entonces |aₙ| converge a |L|]].
 12. [[./src/Reto_12.lean][Si aₙ → L, bₙ → M y L < M, entonces eventualmente aₙ < bₙ]].
+13. [[./src/Reto_13.lean][Desigualdad triangular inversa: ||x| - |y|| ≤ |x - y|]].
+14. [[./src/Reto_14.lean][Para todo n ∈ ℕ, 2n + 9 ≤ 2ⁿ⁺⁴]].
+15. [[./src/Reto_15.lean][(∃ k ∈ ℕ)(∀ n ∈ N)((n + k)² ≤ 2ⁿ⁺ᵏ)]].
+16. [[./src/Reto_16.lean][Para todo n ∈ N, n(n+1)(2n+1) es divisible por 6]].
+17. [[./src/Reto_17.lean][Las sucesiones convergentes están acotadas]].
+18. [[./src/Reto_18.lean][Convergencia del producto de sucesiones convergentes]].
+19. [[./src/Reto_19.lean][Las sucesiones convergentes son sucesiones de Cauchy]].

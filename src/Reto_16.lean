@@ -1,4 +1,4 @@
--- Reto_16.lean
+§-- Reto_16.lean
 -- Para todo n ∈ N, n(n+1)(2n+1) es divisible por 6.
 -- Sevilla, 24-agosto-2026
 -- -----------------------------------------------------------
