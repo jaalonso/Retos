@@ -1,6 +1,5 @@
 -- Reto_18.lean
--- Si aₙ converge a L y bₙ converge a M, entonces aₙbₙ
---  converge a LM.
+-- Convergencia del producto de sucesiones convergentes.
 -- Sevilla, 7-septiembre-2026
 -- -----------------------------------------------------------
 
