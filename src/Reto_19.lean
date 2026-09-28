@@ -129,11 +129,13 @@ by
   -- q : ℕ
   -- hq : q ≥ k
   -- ⊢ |u p - u q| < ε
+  have h1 : |u p - a| < ε / 2 := hk p hp
+  have h2 : |u q - a| < ε / 2 := hk q hq
   calc |u p - u q|
        = |(u p - a) + (a - u q)| := by ring_nf
      _ ≤ |u p - a| + |a - u q|   := abs_add_le _ _
      _ = |u p - a| + |u q - a|   := by simp [abs_sub_comm]
-     _ < ε / 2 + ε / 2           := add_lt_add (hk p hp) (hk q hq)
+     _ < ε / 2 + ε / 2           := by gcongr
      _ = ε                       := by ring
 
 -- 4ª demostración
