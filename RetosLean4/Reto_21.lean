@@ -82,22 +82,11 @@
 -- Demostraciones con Lean4
 -- ========================
 
-import Mathlib.Data.Real.Basic
+import Mathlib.Basic.Real.Basic
+import RetosLean4.Defs -- LimSuc, extraccion, subsucesion
 
 variable {u v : ℕ → ℝ}
 variable {a : ℝ}
-
--- φ es una función de extracción.
-def extraccion (φ : ℕ → ℕ):=
-  StrictMono φ
-
--- v es una subsucesión de u.
-def subsucesion (v u : ℕ → ℝ) :=
-  ∃ φ, extraccion φ ∧ v = u ∘ φ
-
--- a es el límite de u.
-def LimSuc (u : ℕ → ℝ) (a : ℝ) :=
-  ∀ ε > 0, ∃ k : ℕ, ∀ n ≥ k, |u n - a| < ε
 
 -- 1ª demostración
 -- ===============
@@ -200,7 +189,7 @@ by
 -- 4ª demostración
 -- ===============
 
-example
+theorem limite_subsucesion
   (hv : subsucesion v u)
   (ha : LimSuc u a)
   : LimSuc v a :=

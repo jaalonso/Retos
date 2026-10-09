@@ -1,10 +1,12 @@
-+name = "Retos"
+name = "Retos"
 defaultTargets = ["Retos"]
 
 [[require]]
 name = "mathlib"
-git = "https://github.com/leanprover-community/mathlib4.git"
+scope = "leanprover-community"
+rev = "v4.34.1"
 
 [[lean_lib]]
 name = "Retos"
-globs = ["src.+"]
+srcDir = "."
+globs = ["RetosLean4.+"]

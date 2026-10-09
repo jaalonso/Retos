@@ -48,13 +48,11 @@
 -- Demostraciones con Lean4
 -- ========================
 
-import Mathlib.Data.Real.Basic
+import Mathlib.Basic.Real.Basic
 import Mathlib.Tactic
+import RetosLean4.Defs -- LimSuc
 
 variable (a : ℕ → ℝ)
-
-def LimSuc (a : ℕ → ℝ) (L : ℝ) : Prop :=
-  ∀ ε > 0, ∃ k : ℕ, ∀ n ≥ k, |a n - L| < ε
 
 -- 1ª solución
 -- ===========

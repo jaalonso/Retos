@@ -39,14 +39,9 @@
 -- Demostraciones en Lean 4
 -- ========================
 
-import Mathlib.Data.Real.Basic
+import Mathlib.Basic.Real.Basic
 import Mathlib.Tactic
-
-def LimSuc (a : ℕ → ℝ) (L : ℝ) : Prop :=
-  ∀ ε > 0, ∃ k : ℕ, ∀ n ≥ k, |a n - L| < ε
-
-def CotaSup (a : ℕ → ℝ) (M : ℝ) : Prop :=
-  ∀ n, a n ≤ M
+import RetosLean4.Defs -- LimSuc, CotaSup
 
 variable {a : ℕ → ℝ}
 variable {L M : ℝ}

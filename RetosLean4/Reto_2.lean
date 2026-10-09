@@ -17,12 +17,12 @@
 --    def LimSuc (a : ℕ → ℝ) (L : ℝ) : Prop :=
 --      ∀ ε > 0, ∃ N : ℕ, ∀ n ≥ N, |a n - L| < ε
 --
---    def SucConv (a : ℕ → ℝ) : Prop :=
+--    def SucConvergente (a : ℕ → ℝ) : Prop :=
 --      ∃ L, LimSuc a L
 --
 --    example
 --      (ha : ∀ n, a n = (-1) ^ n)
---      : ¬ SucConv a :=
+--      : ¬ SucConvergente a :=
 --    by sorry
 -- ---------------------------------------------------------------------
 
@@ -48,26 +48,21 @@
 -- Demostraciones con Lean4
 -- ========================
 
-import Mathlib.Data.Real.Basic
+import Mathlib.Basic.Real.Basic
 import Mathlib.Tactic
+import RetosLean4.Defs -- LimSuc, SucConvergente
 
 variable {a : ℕ → ℝ}
-
-def LimSuc (a : ℕ → ℝ) (L : ℝ) : Prop :=
-  ∀ ε > 0, ∃ N : ℕ, ∀ n ≥ N, |a n - L| < ε
-
-def SucConv (a : ℕ → ℝ) : Prop :=
-  ∃ L, LimSuc a L
 
 -- 1ª demostración
 -- ===============
 
 example
   (ha : ∀ n, a n = (-1) ^ n)
-  : ¬ SucConv a :=
+  : ¬ SucConvergente a :=
 by
   intro h
-  -- h : SucConv a
+  -- h : SucConvergente a
   -- ⊢ False
   obtain ⟨L, hL⟩ := h
   -- L : ℝ
@@ -97,7 +92,7 @@ by
 
 example
   (ha : ∀ n, a n = (-1) ^ n)
-  : ¬SucConv a :=
+  : ¬SucConvergente a :=
 by
   rintro ⟨L, hL⟩
   -- L : ℝ
@@ -192,10 +187,10 @@ hN (2*N+1) L10
 
 example
   (ha : ∀ n, a n = (-1) ^ n)
-  : ¬ SucConv a :=
+  : ¬ SucConvergente a :=
 by
   intro h
-  -- h : SucConv a
+  -- h : SucConvergente a
   -- ⊢ False
   obtain ⟨L, hL⟩ := h
   -- L : ℝ

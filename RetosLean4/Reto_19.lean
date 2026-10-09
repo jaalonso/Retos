@@ -32,19 +32,11 @@
 -- Demostraciones con Lean4
 -- ========================
 
-import Mathlib.Data.Real.Basic
+import Mathlib.Basic.Real.Basic
 import Mathlib.Tactic
+import RetosLean4.Defs -- LimSuc, SucConvergente, SucCauchy
 
 variable {u : ℕ → ℝ}
-
-def LimSuc (u : ℕ → ℝ) (a : ℝ) : Prop :=
-  ∀ ε > 0, ∃ k, ∀ n ≥ k, |u n - a| < ε
-
-def SucConvergente (u : ℕ → ℝ) :=
-  ∃ a, LimSuc u a
-
-def SucCauchy (u : ℕ → ℝ) :=
-  ∀ ε > 0, ∃ k, ∀ p ≥ k, ∀ q ≥ k, |u p - u q| < ε
 
 -- 1ª demostración
 -- ===============

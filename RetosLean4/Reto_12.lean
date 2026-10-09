@@ -52,11 +52,9 @@
 -- Demostraciones con Lean4
 -- ========================
 
-import Mathlib.Data.Real.Basic
+import Mathlib.Basic.Real.Basic
 import Mathlib.Tactic
-
-def LimSuc (a : ℕ → ℝ) (L : ℝ) : Prop :=
-  ∀ ε > 0, ∃ k : ℕ, ∀ n ≥ k, |a n - L| < ε
+import RetosLean4.Defs -- LimSuc
 
 variable {a b : ℕ → ℝ}
 variable {L M : ℝ}
@@ -122,10 +120,10 @@ example
     ∃ k, ∀ n ≥ k, a n < b n := by
   set ε := (M - L) / 2 with ε_def
   -- ε_def : ε = (M - L) / 2
-  obtain ⟨k1, hk1⟩ := ha ε (by positivity)
+  obtain ⟨k1, hk1⟩ := ha ε (half_pos (sub_pos_of_lt hLM))
   -- k1 : ℕ
   -- hk1 : ∀ n ≥ k1, |a n - L| < ε
-  obtain ⟨k2, hk2⟩ := hb ε (by positivity)
+  obtain ⟨k2, hk2⟩ := hb ε (half_pos (sub_pos_of_lt hLM))
   -- k2 : ℕ
   -- hk2 : ∀ n ≥ k2, |b n - M| < ε
   set k := max k1 k2

@@ -32,8 +32,8 @@
 -- Demostración con Lean4
 -- ======================
 
-import Mathlib.Tactic
 import Mathlib.Data.Nat.Prime.Defs
+import Mathlib.Tactic
 
 open Nat
 

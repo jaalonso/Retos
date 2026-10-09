@@ -1,23 +1,23 @@
 #+TITLE: Retos matemáticos con Lean 4
 
-Repositorio de ejercicios semanales de demostración en Lean 4 del grupo [[https://t.me/Retos_Matematicos][Retos matemáticos]].
+Repositorio de ejercicios semanales de demostración en Lean 4.
 
-1. [[./src/Reto_1.lean][La sucesión 1/n converge a 0]].
-2. [[./src/Reto_2.lean][La sucesión 1, -1, 1, -1,... no es convergente]].
-3. [[./src/Reto_3.lean][Si aₙ converge a L, entonces 2aₙ converge a 2L]].
-4. [[./src/Reto_4.lean][Existen infinitos números primos]].
-5. [[./src/Reto_5.lean][5²ⁿ - 2³ⁿ es divisible por 17]].
-6. [[./src/Reto_6.lean][Teorema del emparedado]].
-7. [[./src/Reto_7.lean][La composición de funciones inyectivas es inyectiva]].
-8. [[./src/Reto_8.lean][Una sucesión que posee infinitos términos con valor absoluto superior a 10 no puede converger a un límite cuyo valor absoluto sea menor que 5]].
-9. [[./src/Reto_9.lean][Unicidad del límite]].
-10. [[./src/Reto_10.lean][Si aₙ → L con L ≠ 0, entonces |aₙ| ≥ |L|/2 eventualmente]].
-11. [[./src/Reto_11.lean][Si aₙ converge a L, entonces |aₙ| converge a |L|]].
-12. [[./src/Reto_12.lean][Si aₙ → L, bₙ → M y L < M, entonces eventualmente aₙ < bₙ]].
-13. [[./src/Reto_13.lean][Desigualdad triangular inversa: ||x| - |y|| ≤ |x - y|]].
-14. [[./src/Reto_14.lean][Para todo n ∈ ℕ, 2n + 9 ≤ 2ⁿ⁺⁴]].
-15. [[./src/Reto_15.lean][(∃ k ∈ ℕ)(∀ n ∈ N)((n + k)² ≤ 2ⁿ⁺ᵏ)]].
-16. [[./src/Reto_16.lean][Para todo n ∈ N, n(n+1)(2n+1) es divisible por 6]].
-17. [[./src/Reto_17.lean][Las sucesiones convergentes están acotadas]].
-18. [[./src/Reto_18.lean][Convergencia del producto de sucesiones convergentes]].
-19. [[./src/Reto_19.lean][Las sucesiones convergentes son sucesiones de Cauchy]].
+1. [[./RetosLean4/Reto_1.lean][La sucesión 1/n converge a 0]].
+2. [[./RetosLean4/Reto_2.lean][La sucesión 1, -1, 1, -1,... no es convergente]].
+3. [[./RetosLean4/Reto_3.lean][Si aₙ converge a L, entonces 2aₙ converge a 2L]].
+4. [[./RetosLean4/Reto_4.lean][Existen infinitos números primos]].
+5. [[./RetosLean4/Reto_5.lean][5²ⁿ - 2³ⁿ es divisible por 17]].
+6. [[./RetosLean4/Reto_6.lean][Teorema del emparedado]].
+7. [[./RetosLean4/Reto_7.lean][La composición de funciones inyectivas es inyectiva]].
+8. [[./RetosLean4/Reto_8.lean][Una sucesión que posee infinitos términos con valor absoluto superior a 10 no puede converger a un límite cuyo valor absoluto sea menor que 5]].
+9. [[./RetosLean4/Reto_9.lean][Unicidad del límite]].
+10. [[./RetosLean4/Reto_10.lean][Si aₙ → L con L ≠ 0, entonces |aₙ| ≥ |L|/2 eventualmente]].
+11. [[./RetosLean4/Reto_11.lean][Si aₙ converge a L, entonces |aₙ| converge a |L|]].
+12. [[./RetosLean4/Reto_12.lean][Si aₙ → L, bₙ → M y L < M, entonces eventualmente aₙ < bₙ]].
+13. [[./RetosLean4/Reto_13.lean][Desigualdad triangular inversa: ||x| - |y|| ≤ |x - y|]].
+14. [[./RetosLean4/Reto_14.lean][Para todo n ∈ ℕ, 2n + 9 ≤ 2ⁿ⁺⁴]].
+15. [[./RetosLean4/Reto_15.lean][(∃ k ∈ ℕ)(∀ n ∈ N)((n + k)² ≤ 2ⁿ⁺ᵏ)]].
+16. [[./RetosLean4/Reto_16.lean][Para todo n ∈ N, n(n+1)(2n+1) es divisible por 6]].
+17. [[./RetosLean4/Reto_17.lean][Las sucesiones convergentes están acotadas]].
+18. [[./RetosLean4/Reto_18.lean][Convergencia del producto de sucesiones convergentes]].
+19. [[./RetosLean4/Reto_19.lean][Las sucesiones convergentes son sucesiones de Cauchy]].
