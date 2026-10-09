@@ -1,4 +1,4 @@
--- Reto_21lean
+-- Reto_21.lean
 -- Las subsucesiones tienen el mismo límite que la sucesión.
 -- Sevilla, 28-septiembre-2026
 -- ---------------------------------------------------------------

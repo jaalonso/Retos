@@ -9,7 +9,7 @@ Repositorio de ejercicios semanales de demostración en Lean 4.
 5. [[./RetosLean4/Reto_5.lean][5²ⁿ - 2³ⁿ es divisible por 17]].
 6. [[./RetosLean4/Reto_6.lean][Teorema del emparedado]].
 7. [[./RetosLean4/Reto_7.lean][La composición de funciones inyectivas es inyectiva]].
-8. [[./RetosLean4/Reto_8.lean][Una sucesión que posee infinitos términos con valor absoluto superior a 10 no puede converger a un límite cuyo valor absoluto sea menor que 5]].
+8. [[./RetosLean4/Reto_8.lean][Sucesiones con infinitos términos grandes no convergen a límites pequeños]].
 9. [[./RetosLean4/Reto_9.lean][Unicidad del límite]].
 10. [[./RetosLean4/Reto_10.lean][Si aₙ → L con L ≠ 0, entonces |aₙ| ≥ |L|/2 eventualmente]].
 11. [[./RetosLean4/Reto_11.lean][Si aₙ converge a L, entonces |aₙ| converge a |L|]].
@@ -21,3 +21,6 @@ Repositorio de ejercicios semanales de demostración en Lean 4.
 17. [[./RetosLean4/Reto_17.lean][Las sucesiones convergentes están acotadas]].
 18. [[./RetosLean4/Reto_18.lean][Convergencia del producto de sucesiones convergentes]].
 19. [[./RetosLean4/Reto_19.lean][Las sucesiones convergentes son sucesiones de Cauchy]].
+20. [[./RetosLean4/Reto_20.lean][Si aₙ → L y M es una cota superior de aₙ, entonces L ≤ M]].
+21. [[./RetosLean4/Reto_21.lean][Las subsucesiones tienen el mismo límite que la sucesión]].
+22. [[./RetosLean4/Reto_22.lean][Subsucesiones con límites distintos implican no convergencia]].
